@@ -4,7 +4,8 @@
 #   3. $ terraform plan -out firstdeploy.plan
 #   4. Optional: $ terraform show firstdeploy.plan (to look at plan later)
 #   5. $ terraform apply
-#   6. $ terraform
+#   6. $ Optional: $ terraform show (to look at configuration)
+
 
 
 # Configure the Azure provider
@@ -16,5 +17,17 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
     name     = "myTFResourceGroup"
     location = "eastus"
+
+    tags = {
+        environment = "TF sandbox"
+    }
 }
 
+# To Modify:
+#   1. Modify config
+#   2. $ terraform plan -out seconddeploy.plan
+#   3. $ terraform apply "seconddeploy.plan"
+
+# To Destroy:
+#   1. $ terraform plan -destroy
+#   2. $ terraform destroy
